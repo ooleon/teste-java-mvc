@@ -159,7 +159,8 @@ class PessoaServiceTest {
 //      Getting a pessoa that exist.
         Pessoa preUpdated;
         Pessoa postUpdated;
-        uuidProvided=pessoaService.findAll().getLast().getUuid();
+       uuidProvided=pessoaService.findAll().getLast().getUuid();  //jdk 23
+//       uuidProvided=pessoaService.findAll().get(0).getUuid();  //jdk 17
         preUpdated = pessoaService.findById(uuidProvided).get();
         String oldAdd = preUpdated.getEndereco();
         log.info(oldAdd);
@@ -177,7 +178,9 @@ class PessoaServiceTest {
     @Order(6)
     void deleteById() {
 //      Getting a pessoa that exist.
-        uuidProvided=pessoaService.findAll().getLast().getUuid();
+        uuidProvided=pessoaService.findAll().getLast().getUuid();   //jdk 23
+//        uuidProvided=pessoaService.findAll().get(0).getUuid();   //jdk 17
+
         Pessoa preDeleted = pessoaService.findById(uuidProvided).get();
         log.info("uuid for deleting - " + uuidProvided.toString());
         pessoaService.deleteById(preDeleted.getUuid());

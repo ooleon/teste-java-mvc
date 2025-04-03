@@ -1,10 +1,12 @@
 package pessoas.Controller;
 
+import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import pessoas.Entity.Pessoa;
 import pessoas.Excetions.NaoDadosFailedException;
 import pessoas.Excetions.PessoaNaoEncontrada;
@@ -44,8 +46,30 @@ public class PessoaController {
     }
 
 
+    //    @PreAuthorize("hasRole('USER')") TODO: Search Spring Security dependence and implementation
+    //    @Cacheable(value = "pessoas", key = "#uuid") TODO: Cacheable
+    //    @Operation(summary = "Busca uma pessoa pelo ID")
+    //    @ApiResponses(value = {
+    //            @ApiResponse(responseCode = "200", description = "Pessoa encontrada"),
+    //            @ApiResponse(responseCode = "404", description = "Pessoa não encontrada")
+    //    })
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable("id") UUID uuid){
+    public ResponseEntity<?> findById(@PathVariable("id") @NotNull UUID uuid) {
+        log.info("Buscando pessoa com ID: {}", uuid);
+        // Busca a pessoa no repositório
+/*
+        Pessoa pessoa = pessoaService.findById(uuid)
+                .orElseThrow(() -> {
+                            log.warn("Pessoa com ID {} não encontrada", uuid);
+                            PessoaNaoEncontrada pessoaNaoEncontrada = new PessoaNaoEncontrada();
+//                    return new ResponseStatusException(HttpStatus.NOT_FOUND, pessoaNaoEncontrada.MESSAGE);
+                    return new PessoaNaoEncontradaFailedException(pessoaNaoEncontrada.MESSAGE);
+                        }
+                );
+
+        // Retorna a pessoa com status HTTP 200 (OK)
+        return ResponseEntity.ok(pessoa);
+*/
 
         Optional<Pessoa> pessoa = pessoaService.findById(uuid);
 
@@ -59,6 +83,7 @@ public class PessoaController {
 
         PessoaDTO pessoaDTO = pessoa.map(p1 -> PessoaMapper.entityToDTO(p1)).get();
         return ResponseEntity.ok(pessoaDTO);
+
     }
 
     @PostMapping(value = {"", "/"})

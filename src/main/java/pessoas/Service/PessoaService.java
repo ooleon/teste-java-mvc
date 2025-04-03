@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pessoas.Entity.Pessoa;
-import pessoas.Excetions.ExceptionHandlerAdvice;
+import pessoas.Excetions.GlobalExceptionHandler;
 import pessoas.Excetions.NaoDadosFailedException;
 import pessoas.Repository.PessoaRepository;
 

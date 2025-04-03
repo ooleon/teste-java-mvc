@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @Getter
 @Setter
 public class PessoaNaoEncontrada {
-    String erro = "Pessoa não encontrada";
+    public final String erro = "Pessoa não encontrada";
 }
