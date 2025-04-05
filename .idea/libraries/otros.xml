@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="otros">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/otros/spring-boot-h2Database-jpa-main.zip!/" />
+      <root url="jar://$PROJECT_DIR$/otros/Spring-Boot-Meetings-master.zip!/" />
+      <root url="jar://$PROJECT_DIR$/otros/Spring-Boot-App-using-JDBC-master.zip!/" />
+      <root url="jar://$PROJECT_DIR$/otros/microservice-springboot-h2-master.zip!/" />
+      <root url="jar://$PROJECT_DIR$/otros/proiect_web_java-master.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
